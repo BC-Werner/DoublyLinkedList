@@ -8,12 +8,9 @@ DoublyLinkedList::~DoublyLinkedList() {
 void DoublyLinkedList::push_front(int data) {
     if (this->head() == NULL) {
         Node *node = new Node(data);
-        this->setHead(node);
-        this->m_size++;
     } else {
         Node *node = new Node(data, NULL, this->head());
         this->setHead(node);
-        this->m_size++;
     }
 }
 
@@ -66,6 +63,18 @@ Node* DoublyLinkedList::tail() {
 }
 
 
+// Return the previous Node from a given index in the List
+Node* DoublyLinkedList::back() {
+
+}
+
+
+// Return the next Node from a given index in the List
+Node* DoublyLinkedList::next() {
+
+}
+
+
 // Set the head of the List
 void DoublyLinkedList::setHead(Node *node) {
     this->m_head = node;
@@ -80,13 +89,13 @@ void DoublyLinkedList::setTail(Node *node) {
 
 // Return the size of the List
 int DoublyLinkedList::size() {
-    return this->m_size;
+
 }
 
 
 // Return if the List is empty
 bool DoublyLinkedList::empty() {
-    return this->head() == NULL;
+
 }
 
 
@@ -102,13 +111,11 @@ void DoublyLinkedList::clear() {
         current = current->getNext();
 
         delete prev;
-        this->m_size--;
     }
 
     this->setHead(NULL);
     this->setTail(NULL);
     delete current;
-    this->m_size--;
 }
 
 
@@ -119,14 +126,14 @@ void DoublyLinkedList::printList() {
         return;
     }
 
-    cout << "{- ";
+    cout << "{- " << endl;
 
     Node *current = this->head();
     while (current != NULL) {
         cout << current->getData() << " ";
         current = current->getNext();
     }
-    cout << "-}" << endl;
+    cout << " -}" << endl;
 }
 
 

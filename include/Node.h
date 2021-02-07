@@ -23,4 +23,4 @@ class Node {
         void setData(int data) { m_data = data; };
         void setPrev(Node *prev) { m_prev = prev; };
         void setNext(Node *next) { m_next = next; };
-}
+};

@@ -4,10 +4,11 @@ class DoublyLinkedList {
     private:
         Node *m_head { NULL };
         Node *m_tail { NULL };
+        int m_size { 0 };
 
     public:
         DoublyLinkedList()
-            : m_head(NULL), m_tail(NULL)
+            : m_head(NULL), m_tail(NULL), m_size(0)
         {}
 
         ~DoublyLinkedList();
@@ -22,11 +23,12 @@ class DoublyLinkedList {
 
         Node* head();
         Node* tail();
-        Node* back();
-        Node* next();
+
+        void setHead(Node *node);
+        void setTail(Node *node);
 
         int size();
         bool empty();
         void clear();
         void printList();
-}
+};
