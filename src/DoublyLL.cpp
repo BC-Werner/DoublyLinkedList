@@ -9,6 +9,7 @@ void DoublyLinkedList::push_front(int data) {
     if (this->head() == NULL) {
         Node *node = new Node(data);
         this->setHead(node);
+        this->setTail(node);
         this->m_size++;
     } else {
         Node *node = new Node(data, NULL, this->head());
@@ -20,7 +21,33 @@ void DoublyLinkedList::push_front(int data) {
 
 // Push a new Node to the tail of the List
 void DoublyLinkedList::push_back(int data) {
+    if (this->head() == NULL && this->tail() == NULL) {
+        Node *node = new Node(data);
 
+        this->setHead(node);
+        this->m_size++;
+        return;
+    }
+
+    if (this->head() != NULL && this->tail() == NULL) {
+        Node *node = new Node(data, this->head(), NULL);
+
+        this->head()->setNext(node);
+        this->setTail(node);
+        this->m_size++;
+        return;  
+    }
+
+    if (this->head() != NULL && this->tail() != NULL) {
+        Node *node = new Node(data, this->tail(), NULL);
+
+        this->tail()->setNext(node);
+        this->setTail(node);
+        this->m_size++;
+        return;
+    }
+
+    cout << "Error in push_back()" << endl;
 }
 
 
