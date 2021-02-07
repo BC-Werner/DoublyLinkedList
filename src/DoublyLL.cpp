@@ -25,6 +25,7 @@ void DoublyLinkedList::push_back(int data) {
         Node *node = new Node(data);
 
         this->setHead(node);
+        this->setTail(node);
         this->m_size++;
         return;
     }
@@ -59,13 +60,31 @@ void DoublyLinkedList::insert(const int position, int data) {
 
 // Pop an existing Node from the head of the List
 void DoublyLinkedList::pop_front() {
+    if (this->head() == NULL) return;
+    if (this->head() == this->tail()) {
 
+        Node *temp = this->head();
+        this->setHead(NULL);
+        this->setTail(NULL);
+        this->m_size--;
+
+        delete temp;
+    } else {
+
+        Node *temp = this->head();
+        this->setHead(this->head()->getNext());
+        this->m_size--;
+
+        delete temp;
+    }
 }
 
 
 // Pop an existing Node from the tail of the List
 void DoublyLinkedList::pop_back() {
-
+    if (this->head() == NULL) return;
+    if (this->head() == this->tail())
+    if (this->head() != NULL && this->tail() == NULL);
 }
 
 
