@@ -83,8 +83,23 @@ void DoublyLinkedList::pop_front() {
 // Pop an existing Node from the tail of the List
 void DoublyLinkedList::pop_back() {
     if (this->head() == NULL) return;
-    if (this->head() == this->tail())
-    if (this->head() != NULL && this->tail() == NULL);
+    if (this->head() == this->tail()) {
+        Node *temp = this->head();
+        this->setHead(NULL);
+        this->setTail(NULL);
+        this->m_size--;
+
+        delete temp;
+    }
+
+    if (this->head() != NULL && this->tail() != NULL) {
+        Node *temp = this->tail();
+
+        this->setTail(this->tail()->getPrev());
+        this->tail()->setNext(NULL);
+
+        delete temp;
+    }
 }
 
 

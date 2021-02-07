@@ -14,6 +14,7 @@ int main() {
     DLL.push_back(7);
     DLL.push_back(8);
     DLL.pop_front();
+    DLL.pop_back();
 
     DLL.printList();
 
