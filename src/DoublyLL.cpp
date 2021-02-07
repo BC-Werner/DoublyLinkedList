@@ -1,7 +1,10 @@
 #include "../include/DoublyLL.h"
 
 DoublyLinkedList::~DoublyLinkedList() {
+    this->clear();
 
+    delete m_head;
+    delete m_tail;
 }
 
 // Push a new Node to the head of the List
