@@ -18,5 +18,10 @@ int main() {
 
     DLL.printList();
 
+    DLL.insert(3, 50);
+    DLL.insert(50, 100);
+
+    DLL.printList();
+
     return 0;
 }

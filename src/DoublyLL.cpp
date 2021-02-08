@@ -57,7 +57,36 @@ void DoublyLinkedList::push_back(int data) {
 
 // Insert a new Node at a give position in the List
 void DoublyLinkedList::insert(const int position, int data) {
+    if (this->empty()) {
+        this->push_front(data);
+        return;
+    }
 
+    if (position > this->size()) {
+        this->push_back(data);
+        return;
+    }
+
+    Node *node = new Node(data);
+    Node *current = this->head();
+    Node *prev = NULL;
+    int count = 0;
+
+    while (count < position && current->getNext() != NULL) {
+        // if (current == NULL) break;
+
+        prev = current;
+        current = current->getNext();
+        count++;
+    }
+
+    node->setNext(current);
+    node->setPrev(prev);
+
+    current->setPrev(node);
+    prev->setNext(node);
+
+    this->m_size++;
 }
 
 
