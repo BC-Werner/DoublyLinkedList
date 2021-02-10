@@ -30,7 +30,17 @@ int main() {
 
     DLL.printList();
 
+    first = 8;
+    last = 4;
+    cout << "\nErasing Nodes from the index : " << first << " : to : " << last << " :" << endl;
+    DLL.erase(first, last);
+
+    DLL.printList();
+
     cout << "\n--Clearing the List--" << endl;
     DLL.clear();
+    DLL.printList();
+
+
     return 0;
 }

@@ -51,7 +51,7 @@ void DoublyLinkedList::push_back(int data) {
         return;
     }
 
-    cout << "Error in push_back()" << endl;
+     cerr << "Error in push_back()" << endl;
 }
 
 
@@ -164,11 +164,15 @@ void DoublyLinkedList::erase(const int position) {
 // Erase a range of existing Nodes from a given range in the List
 void DoublyLinkedList::erase(const int first, const int last) {
     if (first < 0) {
-        cout << "Error: Outside of Bounds" << endl;
+         cerr << "Error: Outside of Bounds" << endl;
         return;
     }
     if (last >= this->size()) {
-        cout << "Error: Outside of Bounds" << endl;
+         cerr << "Error: Outside of Bounds" << endl;
+        return;
+    }
+    if (first > last) {
+         cerr << "Error: Imporper range. Cannot erase Nodes between: (" << first << ", " << last << ")" << endl;
         return;
     }
 
