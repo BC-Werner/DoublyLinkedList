@@ -137,13 +137,61 @@ void DoublyLinkedList::pop_back() {
 
 // Erase an existing Node from a given position in the List
 void DoublyLinkedList::erase(const int position) {
+    if (this->empty()) return;
+    if (position < 0 || position >= this->size()) return;
 
+    Node *prev = NULL;
+    Node *current = this->head();
+    int count = 0;
+
+    while (count < position && current->getNext() != NULL) {
+        prev = current;
+        current = current->getNext();
+        count++;
+    }
+
+    prev->setNext(current->getNext());
+    current->getNext()->setPrev(prev);
+
+    current->setNext(NULL);
+    current->setPrev(NULL);
+
+    delete current;
+    this->m_size--;
 }
 
 
 // Erase a range of existing Nodes from a given range in the List
 void DoublyLinkedList::erase(const int first, const int last) {
+    if (first < 0) {
+        cout << "Error: Outside of Bounds" << endl;
+        return;
+    }
+    if (last >= this->size()) {
+        cout << "Error: Outside of Bounds" << endl;
+        return;
+    }
 
+    Node *prev = NULL;
+    Node *current = this->head();
+    Node *temp = NULL;
+    int count = 0;
+
+    while (count <= last && current->getNext() != NULL) {
+        if (count >= first) {
+            temp = current;
+            prev->setNext(current->getNext());
+            current->getNext()->setPrev(prev);
+            current = prev;
+
+            delete temp;
+            this->m_size--;
+        }
+
+        prev = current;
+        current = current->getNext();
+        count++;
+    }
 }
 
 
