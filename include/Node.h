@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 class Node {
     private:
         int m_data { 0 };

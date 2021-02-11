@@ -1,5 +1,7 @@
 #include "../include/DoublyLL.h"
 
+using namespace std;
+
 DoublyLinkedList::~DoublyLinkedList() {
     this->clear();
 
