@@ -9,7 +9,7 @@ DoublyLinkedList::~DoublyLinkedList() {
 
 // Push a new Node to the head of the List
 void DoublyLinkedList::push_front(int data) {
-    if (this->head() == NULL) {
+    if (this->empty()) {
         Node *node = new Node(data);
         this->setHead(node);
         this->setTail(node);
@@ -24,7 +24,7 @@ void DoublyLinkedList::push_front(int data) {
 
 // Push a new Node to the tail of the List
 void DoublyLinkedList::push_back(int data) {
-    if (this->head() == NULL && this->tail() == NULL) {
+    if (this->empty()) {
         Node *node = new Node(data);
 
         this->setHead(node);
@@ -33,7 +33,7 @@ void DoublyLinkedList::push_back(int data) {
         return;
     }
 
-    if (this->head() != NULL && this->tail() == NULL) {
+    if (!this->empty() && this->tail() == NULL) {
         Node *node = new Node(data, this->head(), NULL);
 
         this->head()->setNext(node);
@@ -42,7 +42,7 @@ void DoublyLinkedList::push_back(int data) {
         return;  
     }
 
-    if (this->head() != NULL && this->tail() != NULL) {
+    if (!this->empty()) {
         Node *node = new Node(data, this->tail(), NULL);
 
         this->tail()->setNext(node);
@@ -92,7 +92,7 @@ void DoublyLinkedList::insert(const int position, int data) {
 
 // Pop an existing Node from the head of the List
 void DoublyLinkedList::pop_front() {
-    if (this->head() == NULL) return;
+    if (this->empty()) return;
     if (this->head() == this->tail()) {
 
         Node *temp = this->head();
@@ -114,7 +114,7 @@ void DoublyLinkedList::pop_front() {
 
 // Pop an existing Node from the tail of the List
 void DoublyLinkedList::pop_back() {
-    if (this->head() == NULL) return;
+    if (this->empty()) return;
     if (this->head() == this->tail()) {
         Node *temp = this->head();
         this->setHead(NULL);
@@ -124,7 +124,7 @@ void DoublyLinkedList::pop_back() {
         delete temp;
     }
 
-    if (this->head() != NULL && this->tail() != NULL) {
+    if (!this->empty() && this->tail() != NULL) {
         Node *temp = this->tail();
 
         this->setTail(this->tail()->getPrev());
@@ -152,9 +152,6 @@ void DoublyLinkedList::erase(const int position) {
 
     prev->setNext(current->getNext());
     current->getNext()->setPrev(prev);
-
-    current->setNext(NULL);
-    current->setPrev(NULL);
 
     delete current;
     this->m_size--;
@@ -237,7 +234,7 @@ bool DoublyLinkedList::empty() {
 
 // Clear the List
 void DoublyLinkedList::clear() {
-    if (this->head() == NULL) return;
+    if (this->empty()) return;
 
     Node *prev = NULL; 
     Node *current = this->head();
@@ -259,7 +256,7 @@ void DoublyLinkedList::clear() {
 
 // Print the List
 void DoublyLinkedList::printList() {
-    if (this->head() == NULL) {
+    if (this->empty()) {
         cout << "Empty List" << endl;
         return;
     }
