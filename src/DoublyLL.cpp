@@ -69,7 +69,6 @@ void DoublyLinkedList::insert(const int position, int data) {
         return;
     }
 
-    Node *node = new Node(data);
     Node *current = this->head();
     Node *prev = NULL;
     int count = 0;
@@ -82,8 +81,7 @@ void DoublyLinkedList::insert(const int position, int data) {
         count++;
     }
 
-    node->setNext(current);
-    node->setPrev(prev);
+    Node *node = new Node(data, prev, current);
 
     current->setPrev(node);
     prev->setNext(node);
